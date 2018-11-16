@@ -40,26 +40,38 @@ class _IniStatus extends State<_IniWidgets>{
     return Scaffold(
       appBar: new AppBar(title: Text('App')),
       body: new Container(
-        color: Colors.white,
-          child: Center(
-              child: Column(
+        decoration: new BoxDecoration(
+          color: Colors.grey ,
+          shape: BoxShape.rectangle,
+        ),
+        child: GridView.count(
+          crossAxisCount: 3,
+          children: List.generate(50,
+            (index) {
+              return Stack(
+                alignment: Alignment(-1.0, 1.0),
                 children: <Widget>[
-                  new Text('El contador está en: $_contador',
-                  style: TextStyle(fontSize: 40.0),),
-                  RaisedButton(
-                    onPressed: (){
-                      setState(() {
-                        _contador++;
-                      });
-                    print(_contador);
-                    },
-                    child: Text('+'),
-                  )
+                  Image.network('https://via.placeholder.com/350'),
+                  Text('Cuenta:',
+                    style: TextStyle(
+                      color: Colors.blue
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment(1.0, 1.0),
+                    child: Text('@mglriosr',
+                      style: TextStyle(
+                          color: Colors.blue
+                      ),
+                    ),
+                  ),
                 ],
-              )
+              );
+            }
           )
+        ),
       ),
-
+      
       bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem> [
             BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Inicio')),
@@ -72,7 +84,7 @@ class _IniStatus extends State<_IniWidgets>{
       ),
       floatingActionButton: new FloatingActionButton(
           onPressed: null,
-        child: Text('+'),
+        child: Icon(Icons.add),
       ),
     );
 
